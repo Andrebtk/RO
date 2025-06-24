@@ -22,9 +22,10 @@ folium.Marker(
 
 paris.metro(my_map)
 
-
+"""
 #Display the map
 my_map.save("map.html")
 
 
 webbrowser.open("map.html")
+"""

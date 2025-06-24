@@ -1,6 +1,8 @@
 import folium
 from folium.plugins import MarkerCluster
 import json
+import networkx as nx
+
 
 stations = {}
 
@@ -35,6 +37,20 @@ def metro(map):
 							"Commerce", "Félix Faure", "Boucicaut", "Lourmel", "Balard"]
 
 	metro_add(map, stations, liste_stations_name, "ligne 8")
+
+	liste_stations_name = ["Porte de Vincennes", "Nation", "Reuilly — Diderot", "Gare de Lyon", "Bastille", "Saint-Paul", "Hôtel de Ville", "Châtelet", "Louvre - Rivoli",
+							"Palais Royal - Musée du Louvre", "Tuileries", "Concorde", "Champs-Élysées - Clemenceau", "Franklin D. Roosevelt", "George V", "Charles de Gaulle — Étoile", 
+							"Argentine", "Porte Maillot"]
+
+	metro_add(map, stations, liste_stations_name, "ligne 1")
+
+	liste_stations_name = ["Porte de Montreuil", "Maraîchers", "Buzenval", "Nation", "Rue des Boulets", "Charonne", "Voltaire", "Saint-Ambroise", "Oberkampf",
+							"République", "Strasbourg - Saint-Denis", "Bonne Nouvelle", "Grands Boulevards", "Richelieu - Drouot", "Chaussée d'Antin - La Fayette", "Havre - Caumartin",
+							"Saint-Augustin", "Miromesnil", "Saint-Philippe du Roule", "Franklin D. Roosevelt", "Alma-Marceau", "Iéna", "Trocadéro", "Rue de la Pompe", "La Muette",
+							"Ranelagh", "Michel-Ange - Molitor", "Exelmans", "Porte de Saint-Cloud"]
+
+	metro_add(map, stations, liste_stations_name, "ligne 9")
+
 
 
 def metro_add(map, metros_json, liste_stations_name, name):
