@@ -3,8 +3,8 @@ from folium.plugins import MarkerCluster
 import pandas as pd
 import webbrowser
 
-import paris
-
+from paris import Metro
+from graph import Graph
 
 home = [48.845080, 2.349461]
 
@@ -19,9 +19,9 @@ folium.Marker(
 ).add_to(my_map)
 
 
+metro = Metro(my_map)
 
-paris.metro(my_map)
-
+metro.plot_graph()
 """
 #Display the map
 my_map.save("map.html")
