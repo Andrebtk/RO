@@ -19,11 +19,14 @@ folium.Marker(
 ).add_to(my_map)
 
 
-metro = Metro(my_map)
+m = Metro(my_map)
 
-metro.plot_graph()
-"""
+m.shortest_path("Corentin Cariou | ligne 7", "Buzenval | ligne 9")
+
+m.plot_graph()
+
 #Display the map
+"""
 my_map.save("map.html")
 
 

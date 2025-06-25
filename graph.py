@@ -14,7 +14,18 @@ class Graph:
 		#if name not in self.list_adjacence:
 		self.list_adjacence[name] = list
 
-	
+
+	def shortest_path(self, station_start, station_end):
+		station_start_name = station_start.split("|")[0].strip()
+		station_start_line = station_start.split("|")[1].strip()
+
+		station_end_name = station_end.split("|")[0].strip()
+		station_end_line = station_end.split("|")[1].strip()
+
+
+		
+		print(self.list_adjacence[station_start])
+
 
 	def print_graph(self):
 		print(self.list_adjacence)

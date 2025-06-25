@@ -2,6 +2,7 @@ import folium
 from folium.plugins import MarkerCluster
 import json
 import networkx as nx
+import re
 
 from graph import Graph
 
@@ -70,35 +71,40 @@ class Metro:
 		last_station_name = ""
 		coord=[]
 		
-		for station_name in liste_stations_name:
+		for i in range(len(liste_stations_name)):
+			station_name = liste_stations_name[i]
+			
+
 			elem = stations[station_name]
 			folium.Marker(
 				location=elem['coord'],
 				tooltip=elem['name'],
-				popup=line_name_arg + " - " + elem['name'],
+				popup=elem['name'] + " | " + line_name_arg,
 				icon=folium.CustomIcon("metro.png", icon_size=(15, 15)),
 			).add_to(map)
 			coord.append(elem['coord'])
 
 
 			list_adj = []
-			if last_station_name != "":
-				list_adj=[last_station_name]
+
+			if i != 0:
+				list_adj.append(liste_stations_name[i-1]+" | " + line_name_arg)
+
+			if i!= len(liste_stations_name)-1:
+				list_adj.append(liste_stations_name[i+1]+" | " + line_name_arg)
+
+			
 
 			# Add to graph
 			#Check if connected to another station
 			for line_name, list_line in self.lines.items():
 				if line_name != line_name_arg and stations[station_name]['name'] in list_line:
-					print(stations[station_name]['name'], line_name, line_name_arg)
 					list_adj.append(stations[station_name]['name'] + " | " + line_name)
 
 			n = station_name + " | " + line_name_arg
 
-			
-
-
 			self.graph.add_node(n, list_adj)
-			last_station_name=n
+
 
 		
 
@@ -113,6 +119,5 @@ class Metro:
 	def plot_graph(self):
 		self.graph.plot()
 
-
-	def shortest_path(self, station1, station2):
-		pass
+	def shortest_path(self, station_start, station_end):
+		self.graph.shortest_path(station_start, station_end)
