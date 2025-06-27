@@ -21,7 +21,7 @@ folium.Marker(
 
 m = Metro(my_map)
 
-m.shortest_path("Corentin Cariou | ligne 7", "Buzenval | ligne 9")
+m.bfs_shortest_path("Corentin Cariou | ligne 7", "Buzenval | ligne 9")
 
 m.plot_graph()
 

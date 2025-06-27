@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import math
 
+from collections import deque
 
 class Graph:
 	
@@ -15,7 +16,11 @@ class Graph:
 		self.list_adjacence[name] = list
 
 
-	def shortest_path(self, station_start, station_end):
+
+	def get(self, station_name):
+		return self.list_adjacence[station_name]
+
+	def bfs_shortest_path(self, station_start, station_end):
 		station_start_name = station_start.split("|")[0].strip()
 		station_start_line = station_start.split("|")[1].strip()
 
@@ -23,8 +28,16 @@ class Graph:
 		station_end_line = station_end.split("|")[1].strip()
 
 
-		
-		print(self.list_adjacence[station_start])
+		visited = set()
+		queue = deque([[station_start]])
+
+		if station_start == station_end:
+			return [station_start]
+
+		while queue:
+			pass
+
+
 
 
 	def print_graph(self):
